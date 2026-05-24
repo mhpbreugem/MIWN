@@ -17,7 +17,11 @@ The runner lives in Standards (`standards/runner/`). Pointed at a MIWN checkout
 (`claim_task.py`), solves it with the shared methods, writes a `vNNNN` solution +
 `meta.json` into `solutions/pool/`, and flips the task to `done`.
 
-> The cross-repo runner wiring (Standards-side `QUEUE_REL`/`runner.config.json`
-> support + a MIWN GitHub Actions workflow) is the T6 follow-up — designed
-> separately, implemented on a Standards branch + PR. Until then, drive a solve
-> locally with `numerics/ree_K3/solve.py`.
+> **Cross-repo runner (T6):** the MIWN side is wired —
+> `.github/workflows/solve.yml` drains this queue via
+> `standards/runner/run_task.py` (claim → solve → write `vNNNN` back). It is
+> **inert until** the Standards-side change (`QUEUE_REL`/`runner.config.json`
+> support + `run_task.py`) is merged and the `standards/` submodule is bumped to a
+> commit that contains it. Until then, drive a solve locally with
+> `numerics/ree_K3/solve.py`, or dry-run the driver:
+> `REPO_ROOT=$PWD python3 standards/runner/run_task.py --config todo/runner.config.json --local --G 5`.

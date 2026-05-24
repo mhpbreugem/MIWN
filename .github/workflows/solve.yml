@@ -1,0 +1,71 @@
+name: solve
+
+# Cross-repo runner: drains MIWN's todo/TASK_QUEUE.json by claiming ready tasks,
+# solving them with the shared methods (standards/ submodule), and committing the
+# resulting solutions/pool/<problem>/vNNNN/ versions back to this repo.
+#
+# Driven by standards/runner/run_task.py. NOTE: requires the standards submodule
+# to be pinned at a commit that contains runner/run_task.py and the QUEUE_REL
+# support in claim_task.py (the T6 Standards PR). Until that PR is merged and the
+# submodule is bumped, this workflow is inert by design.
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_tasks:
+        description: "Max tasks to drain in this run"
+        required: false
+        default: "20"
+  schedule:
+    - cron: "0 */6 * * *"   # every 6h; remove if you prefer manual dispatch only
+
+# Never run two solve workflows at once (they share the queue lock).
+concurrency:
+  group: solve-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write          # commit solutions + queue updates back to the repo
+
+jobs:
+  solve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install methods dependencies
+        run: pip install -r standards/methods/requirements.txt
+
+      - name: Configure git identity
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Drain the queue (claim -> solve -> done)
+        env:
+          REPO_ROOT: ${{ github.workspace }}
+          QUEUE_REL: todo/TASK_QUEUE.json
+          BRANCH: ${{ github.ref_name }}
+          WORKER_ID: gha-${{ github.run_id }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -u
+          MAX="${{ github.event.inputs.max_tasks || '20' }}"
+          for i in $(seq 1 "$MAX"); do
+            set +e
+            python3 standards/runner/run_task.py --config todo/runner.config.json
+            rc=$?
+            set -e
+            if [ "$rc" -eq 3 ]; then echo "queue drained"; break; fi
+            if [ "$rc" -ne 0 ]; then echo "run_task exited $rc — stopping"; exit "$rc"; fi
+          done

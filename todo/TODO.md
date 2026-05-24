@@ -8,9 +8,10 @@
 - [x] Tooling: `scripts/stale.py`, `Makefile` (help/stale/check/publish), `releases/`.
 
 ## Next
-- [ ] T6 — cross-repo runner: Standards-side `QUEUE_REL`/`runner.config.json`
-      support + a MIWN `.github/workflows/solve.yml`. Design first, confirm, then
-      Standards branch + PR. Do not push Standards `main`.
+- [~] T6 — cross-repo runner. MIWN side done (`.github/workflows/solve.yml` +
+      `run_task.py` driver, dry-run verified). **Pending:** merge the Standards
+      PR (`QUEUE_REL`/`run_task.py`), then bump the `standards/` submodule here to
+      that commit so the workflow goes live. Standards `main` via PR only.
 - [ ] Run the full (γ, τ) grid at production `G`/precision via the runner.
 - [ ] Migrate curated REZN content (tex, converged solutions, proofs) per the
       blueprint §D — a separate focused pass after the scaffold lands.
