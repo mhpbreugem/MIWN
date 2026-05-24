@@ -1,0 +1,31 @@
+{
+  "problem": "ree_K3",
+  "version": "v0001",
+  "created_at": "2026-05-24T03:47:38.213877+00:00",
+  "standards_methods_sha": "683ffc6357bbadd08deb64d5fa2c5630aff698cc",
+  "task_id": "ree_K3_g0050_t0200",
+  "params": {
+    "gamma": 0.5,
+    "tau": 2.0,
+    "K": 3,
+    "G": 5,
+    "W": 1.0
+  },
+  "metrics": {
+    "F_inf": "2.277e-10",
+    "one_minus_R2": 0.0001022
+  },
+  "data": [
+    "data/solution.npz"
+  ],
+  "figures": [
+    "figure/fig_knife_edge.pdf"
+  ],
+  "solver": {
+    "engine": "symmetric-anderson (contour_KN_sym)",
+    "precision": "float64",
+    "entrypoint": "numerics/ree_K3/solve.py",
+    "f_tol": "1e-09",
+    "n_evals": 877
+  }
+}

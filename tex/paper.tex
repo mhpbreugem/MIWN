@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+% Figures are included from the by-tex bindings (small ready PDFs only),
+% never from the heavy solutions/pool. Path is relative to this file (tex/).
+\graphicspath{{../solutions/by-tex/fig_knife_edge/figures/}}
+
+% Provenance: which solution versions the figures pin (see _provenance/lock.tex).
+\input{_provenance/lock.tex}
+
+\title{Market Inefficiency Without Noise}
+\author{M.\ H.\ P.\ Breugem}
+\date{Draft --- \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a rational-expectations equilibrium in a homogeneous-CRRA market with
+private signals, and characterise the knife-edge at which the equilibrium price
+ceases to reveal the fundamental. This is a scaffold manuscript; curated content
+migrates from the predecessor (REZN) in a later pass.
+\end{abstract}
+
+\section{Introduction}
+
+Placeholder. The full manuscript will be assembled here, following the writing
+standards in \texttt{standards/writing/}.
+
+\section{Model and equilibrium}
+
+The $K=3$ symmetric fixed point $P = \Phi(P)$ and the informativeness metric
+$1 - R^2$ are defined in \texttt{numerics/ree\_K3/PROBLEM.md}.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.6\linewidth]{fig_knife_edge.pdf}
+  \caption{Price informativeness: $\mathrm{logit}(P)$ against the sufficient
+  statistic $T^\ast = \tau \sum_k u_k$. Built from solution version
+  \PinKnifeEdge{} (see \texttt{solutions/by-tex/fig\_knife\_edge/lock.json}).}
+  \label{fig:knife-edge}
+\end{figure}
+
+\end{document}

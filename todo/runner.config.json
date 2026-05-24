@@ -1,0 +1,15 @@
+{
+  "project": "MIWN",
+  "repo": "https://github.com/mhpbreugem/MIWN.git",
+  "standards": {
+    "repo": "https://github.com/mhpbreugem/standards.git",
+    "ref": "pinned-by-submodule",
+    "methods_path": "standards/methods/solver",
+    "runner_path": "standards/runner"
+  },
+  "queue_path": "todo/TASK_QUEUE.json",
+  "problems_dir": "numerics",
+  "output_pool": "solutions/pool",
+  "write_back": true,
+  "resources": { "vm": "e2-medium-spot", "max_run_hours": 1 }
+}
