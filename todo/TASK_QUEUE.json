@@ -1,109 +1,120 @@
 {
   "queue_version": 1,
-  "updated_at": "2026-05-24T03:45:12.660644+00:00",
+  "updated_at": "2026-05-24T07:29:14.165982+00:00",
   "params": {
     "problem_root": "numerics",
     "output_pool": "solutions/pool",
-    "weighting": "ex-ante"
+    "weighting": "ex-ante",
+    "grid": {
+      "gamma": [
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3,
+        0.4,
+        0.5,
+        0.65,
+        0.8,
+        1.0,
+        1.3,
+        1.6,
+        2.0,
+        2.5,
+        3.2,
+        4.0,
+        5.0,
+        6.5,
+        8.0,
+        10.0
+      ],
+      "tau": [
+        0.3,
+        0.4,
+        0.5,
+        0.65,
+        0.8,
+        1.0,
+        1.3,
+        1.6,
+        2.0,
+        2.5,
+        3.0,
+        3.5,
+        4.0,
+        5.0,
+        6.0,
+        7.5,
+        9.0,
+        11.0,
+        13.0,
+        15.0
+      ],
+      "tau_sweep_gammas": [
+        0.5,
+        1.0,
+        4.0
+      ]
+    },
+    "G": 20,
+    "UMAX": 5,
+    "f_tol": "1e-20",
+    "note": "dps from Standards methods; time-boxed, skip-on-fail"
   },
   "tasks": [
     {
-      "id": "ree_K3_g0025_t0100",
-      "problem": "ree_K3",
-      "status": "ready",
-      "gamma": 0.25,
-      "tau": 1.0,
-      "dps": 70,
-      "depends_on": [],
-      "checkpoint": null,
-      "result": null,
-      "claimed_by": null,
-      "claimed_at": null,
-      "completed_at": null,
-      "note": ""
-    },
-    {
-      "id": "ree_K3_g0050_t0100",
-      "problem": "ree_K3",
-      "status": "blocked",
-      "gamma": 0.5,
-      "tau": 1.0,
-      "dps": 70,
-      "depends_on": [
-        "ree_K3_g0025_t0100"
-      ],
-      "checkpoint": null,
-      "result": null,
-      "claimed_by": null,
-      "claimed_at": null,
-      "completed_at": null,
-      "note": "warm-start from previous gamma at this tau"
-    },
-    {
-      "id": "ree_K3_g0100_t0100",
-      "problem": "ree_K3",
-      "status": "blocked",
-      "gamma": 1.0,
-      "tau": 1.0,
-      "dps": 70,
-      "depends_on": [
-        "ree_K3_g0050_t0100"
-      ],
-      "checkpoint": null,
-      "result": null,
-      "claimed_by": null,
-      "claimed_at": null,
-      "completed_at": null,
-      "note": "warm-start from previous gamma at this tau"
-    },
-    {
-      "id": "ree_K3_g0200_t0100",
-      "problem": "ree_K3",
-      "status": "blocked",
-      "gamma": 2.0,
-      "tau": 1.0,
-      "dps": 70,
-      "depends_on": [
-        "ree_K3_g0100_t0100"
-      ],
-      "checkpoint": null,
-      "result": null,
-      "claimed_by": null,
-      "claimed_at": null,
-      "completed_at": null,
-      "note": "warm-start from previous gamma at this tau"
-    },
-    {
-      "id": "ree_K3_g0025_t0200",
-      "problem": "ree_K3",
-      "status": "ready",
-      "gamma": 0.25,
-      "tau": 2.0,
-      "dps": 70,
-      "depends_on": [],
-      "checkpoint": null,
-      "result": null,
-      "claimed_by": null,
-      "claimed_at": null,
-      "completed_at": null,
-      "note": ""
-    },
-    {
       "id": "ree_K3_g0050_t0200",
       "problem": "ree_K3",
-      "status": "blocked",
+      "status": "done",
       "gamma": 0.5,
       "tau": 2.0,
-      "dps": 70,
+      "dps": null,
+      "depends_on": [],
+      "deps_satisfy": "any",
+      "checkpoint": "solutions/pool/ree_K3/v0007/",
+      "result": {
+        "note": "seed v0007"
+      },
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "PR-branch seed (migrated REZN @7f03509)"
+    },
+    {
+      "id": "ree_K3_g0065_t0200",
+      "problem": "ree_K3",
+      "status": "ready",
+      "gamma": 0.65,
+      "tau": 2.0,
+      "dps": null,
       "depends_on": [
-        "ree_K3_g0025_t0200"
+        "ree_K3_g0050_t0200"
       ],
+      "deps_satisfy": "any",
       "checkpoint": null,
       "result": null,
       "claimed_by": null,
       "claimed_at": null,
       "completed_at": null,
-      "note": "warm-start from previous gamma at this tau"
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0080_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.8,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0065_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
     },
     {
       "id": "ree_K3_g0100_t0200",
@@ -111,16 +122,53 @@
       "status": "blocked",
       "gamma": 1.0,
       "tau": 2.0,
-      "dps": 70,
+      "dps": null,
       "depends_on": [
-        "ree_K3_g0050_t0200"
+        "ree_K3_g0080_t0200"
       ],
+      "deps_satisfy": "any",
       "checkpoint": null,
       "result": null,
       "claimed_by": null,
       "claimed_at": null,
       "completed_at": null,
-      "note": "warm-start from previous gamma at this tau"
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0130_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.3,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0160_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.6,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0130_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
     },
     {
       "id": "ree_K3_g0200_t0200",
@@ -128,32 +176,1294 @@
       "status": "blocked",
       "gamma": 2.0,
       "tau": 2.0,
-      "dps": 70,
+      "dps": null,
       "depends_on": [
-        "ree_K3_g0100_t0200"
+        "ree_K3_g0160_t0200"
       ],
+      "deps_satisfy": "any",
       "checkpoint": null,
       "result": null,
       "claimed_by": null,
       "claimed_at": null,
       "completed_at": null,
-      "note": "warm-start from previous gamma at this tau"
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0250_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 2.5,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0200_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0320_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 3.2,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0250_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0400_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0320_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0500_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 5.0,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0650_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 6.5,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0500_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0800_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 8.0,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0650_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g1000_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 10.0,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0800_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-up @tau=2"
+    },
+    {
+      "id": "ree_K3_g0040_t0200",
+      "problem": "ree_K3",
+      "status": "ready",
+      "gamma": 0.4,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-down @tau=2"
+    },
+    {
+      "id": "ree_K3_g0030_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.3,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0040_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-down @tau=2"
+    },
+    {
+      "id": "ree_K3_g0025_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.25,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0030_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-down @tau=2"
+    },
+    {
+      "id": "ree_K3_g0020_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.2,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0025_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-down @tau=2"
+    },
+    {
+      "id": "ree_K3_g0015_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.15,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0020_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-down @tau=2"
+    },
+    {
+      "id": "ree_K3_g0010_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.1,
+      "tau": 2.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0015_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "gamma-down @tau=2"
+    },
+    {
+      "id": "ree_K3_g0050_t0250",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 2.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0300",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 3.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0250"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0350",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 3.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0300"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0400",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 4.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0350"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0500",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 5.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0400"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0600",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 6.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0500"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0750",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 7.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0600"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0900",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 9.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0750"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t1100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 11.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0900"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t1300",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 13.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t1100"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t1500",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 15.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t1300"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0160",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 1.6,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0130",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 1.3,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0160"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 1.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0130"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0080",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 0.8,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0100"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0065",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 0.65,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0080"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0050",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 0.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0065"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0040",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 0.4,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0050"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0050_t0030",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 0.3,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0050_t0040"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=0.5"
+    },
+    {
+      "id": "ree_K3_g0100_t0250",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 2.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0300",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 3.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0250"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0350",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 3.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0300"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0400",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 4.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0350"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0500",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 5.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0400"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0600",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 6.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0500"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0750",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 7.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0600"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0900",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 9.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0750"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t1100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 11.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0900"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t1300",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 13.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t1100"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t1500",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 15.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t1300"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0160",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 1.6,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0130",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 1.3,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0160"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 1.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0130"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0080",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 0.8,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0100"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0065",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 0.65,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0080"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0050",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 0.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0065"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0040",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 0.4,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0050"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0100_t0030",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 0.3,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0100_t0040"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=1.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0250",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 2.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0300",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 3.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0250"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0350",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 3.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0300"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0400",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 4.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0350"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0500",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 5.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0400"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0600",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 6.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0500"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0750",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 7.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0600"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0900",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 9.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0750"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t1100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 11.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0900"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t1300",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 13.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t1100"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t1500",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 15.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t1300"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-up @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0160",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 1.6,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0200"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0130",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 1.3,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0160"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 1.0,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0130"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0080",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 0.8,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0100"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0065",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 0.65,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0080"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0050",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 0.5,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0065"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0040",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 0.4,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0050"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
+    },
+    {
+      "id": "ree_K3_g0400_t0030",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 4.0,
+      "tau": 0.3,
+      "dps": null,
+      "depends_on": [
+        "ree_K3_g0400_t0040"
+      ],
+      "deps_satisfy": "any",
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "tau-down @gamma=4.0"
     }
   ],
   "deps_semantics": {
     "default": "all",
-    "any": "warm-start from any one checkpoint"
+    "any": "warm-start from any one converged neighbour (continuation)"
   },
   "summary": {
-    "total": 8,
+    "total": 77,
     "ready": 2,
     "claimed": 0,
-    "done": 0,
+    "done": 1,
     "bailed": 0,
-    "blocked": 6
+    "blocked": 74
   },
   "notes": [
     "Schema: standards/runner/TASK_SCHEMA.md",
-    "Generated from numerics/ree_K3/spec.json (one task per (gamma,tau))."
+    "Continuation chains radiate from (gamma,tau)=(0.5,2) seed v0007 to stay on the strong-PR branch.",
+    ">=20 points per sweep line; points that miss the budget are skipped."
   ]
 }

@@ -1,0 +1,25 @@
+{
+  "tex": "fig5_convergence",
+  "generated_at": "2026-05-24T04:23:47.905718+00:00",
+  "solutions": [
+    {
+      "problem": "ree_K3",
+      "version": "v0003",
+      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a"
+    },
+    {
+      "problem": "ree_K3",
+      "version": "v0005",
+      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a"
+    },
+    {
+      "problem": "ree_K3",
+      "version": "v0006",
+      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a"
+    }
+  ],
+  "figures": [
+    "figures/fig5_convergence.pdf"
+  ],
+  "note": "pin migrated from REZN @ 7f03509 (best-effort; confirm against figure source)"
+}

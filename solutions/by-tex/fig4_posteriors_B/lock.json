@@ -1,0 +1,15 @@
+{
+  "tex": "fig4_posteriors_B",
+  "generated_at": "2026-05-24T04:23:47.905718+00:00",
+  "solutions": [
+    {
+      "problem": "ree_K3",
+      "version": "v0007",
+      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a"
+    }
+  ],
+  "figures": [
+    "figures/fig4_posteriors_B.pdf"
+  ],
+  "note": "pin migrated from REZN @ 7f03509 (best-effort; confirm against figure source) | re-pinned to documented seed v0007 (G20 umax5 mp300)"
+}

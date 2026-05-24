@@ -31,6 +31,10 @@ jobs:
   solve:
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        worker: [claude-1, claude-2]   # 2 Claude workers drain the queue in parallel
     steps:
       - name: Checkout (with submodules)
         uses: actions/checkout@v4
@@ -56,7 +60,7 @@ jobs:
           REPO_ROOT: ${{ github.workspace }}
           QUEUE_REL: todo/TASK_QUEUE.json
           BRANCH: ${{ github.ref_name }}
-          WORKER_ID: gha-${{ github.run_id }}
+          WORKER_ID: ${{ matrix.worker }}-${{ github.run_id }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -u
