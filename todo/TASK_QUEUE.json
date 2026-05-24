@@ -1,6 +1,6 @@
 {
   "queue_version": 1,
-  "updated_at": "2026-05-24T20:40:06.029280Z",
+  "updated_at": "2026-05-24T20:40:07.521201Z",
   "params": {
     "problem_root": "numerics",
     "output_pool": "solutions/pool",
@@ -84,15 +84,15 @@
     {
       "id": "ree_K3_g0010_t0200",
       "problem": "ree_K3",
-      "status": "ready",
+      "status": "claimed",
       "gamma": 0.1,
       "tau": 2.0,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "result": null,
-      "claimed_by": null,
-      "claimed_at": null,
+      "claimed_by": "claude-2-26372185964",
+      "claimed_at": "2026-05-24T20:40:07.521180Z",
       "completed_at": null,
       "note": ""
     },
