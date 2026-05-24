@@ -118,7 +118,7 @@ def main() -> None:
             from progress import ProgressReporter  # noqa: PLC0415
             reporter = ProgressReporter(
                 project="MIWN", task_id=task_id, worker_id=args.worker_id,
-                branch=os.environ.get("BRANCH", "main"), interval=120,
+                branch=os.environ.get("BRANCH", "main"), interval=15,
                 repo_root=REPO, progress_rel=args.progress_rel)
             reporter.start()
         except Exception as e:

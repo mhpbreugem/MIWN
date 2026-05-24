@@ -86,7 +86,7 @@ jobs:
           REPO_ROOT: ${{ github.workspace }}
           QUEUE_REL: todo/TASK_QUEUE.json
           BRANCH: ${{ github.ref_name }}
-          WORKER_ID: ${{ matrix.worker }}-${{ github.run_id }}
+          WORKER_ID: ${{ matrix.worker }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           END=$(( $(date +%s) + 13*60 ))   # stop ~13 min in, before the 15-min job timeout
