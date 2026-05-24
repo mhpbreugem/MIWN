@@ -60,7 +60,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           python3 standards/runner/claim_task.py release \
-            --project MIWN --queue-path todo/TASK_QUEUE.json --max-age-hours 0.34 || true
+            --project MIWN --queue-path todo/TASK_QUEUE.json --max-age-hours 0.25 || true
 
   # N workers, each looping claim -> solve -> repeat until no free task or budget.
   solve:
