@@ -1,0 +1,33 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+*.nav
+*.snm
+*.vrb
+
+# OS / editor cruft
+.DS_Store
+*.swp
+
+# Heavy release bundles never go in git (ship as GitHub Release assets)
+miwn-*.zip
+/build/
+
+# Solver scratch
+*.tmp

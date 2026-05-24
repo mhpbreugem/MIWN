@@ -1,0 +1,5 @@
+{
+  "tex": "fig_knife_edge", "generated_at": "<ISO-8601>",
+  "solutions": [ { "problem": "ree_K3", "version": "v0001", "standards_methods_sha": "<sha>" } ],
+  "figures": ["figures/fig_knife_edge.pdf"]
+}

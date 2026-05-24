@@ -1,0 +1,31 @@
+{
+  "problem": "ree_K3",
+  "title": "Symmetric K=3 REE — knife-edge revelation",
+  "K": 3,
+  "params": {
+    "weighting": "ex-ante",
+    "W": 1.0,
+    "dps": 70
+  },
+  "grid": {
+    "gamma": [0.25, 0.5, 1.0, 2.0],
+    "tau": [1.0, 2.0],
+    "warm_start": "chain along increasing gamma at fixed tau"
+  },
+  "solver": {
+    "engine": "symmetric-anderson",
+    "module": "standards/methods/solver/contour_KN_sym.py",
+    "entrypoint": "numerics/ree_K3/solve.py",
+    "precision": "float64",
+    "G": 15,
+    "u_max": 3.0,
+    "f_tol": "1e-9",
+    "max_evals": 4000,
+    "anderson_m": 10
+  },
+  "notes": [
+    "Grid drives todo/TASK_QUEUE.json (one task per (gamma,tau)); schema: standards/runner/TASK_SCHEMA.md.",
+    "Task id format: ree_K3_g{int(gamma*100):04d}_t{int(tau*100):04d}.",
+    "Provenance: model/params follow REZN @ 7f03509; numerical core in standards/methods/solver/."
+  ]
+}

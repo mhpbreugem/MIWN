@@ -1,0 +1,10 @@
+{
+  "release": "ecta-accepted", "created_at": "<ISO-8601>",
+  "miwn_commit": "<sha>", "standards_commit": "<sha>",
+  "paper_pdf": "paper.pdf",
+  "solutions_used": [ { "problem": "ree_K3", "version": "v0001" } ],
+  "bundle_asset": "miwn-ecta-accepted.zip",
+  "doi": null,
+  "build": { "python": "3.x", "requirements": "standards/methods/requirements.txt",
+             "commands": ["make publish VERSION=ecta-accepted"] }
+}

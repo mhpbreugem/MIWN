@@ -1,0 +1,159 @@
+{
+  "queue_version": 1,
+  "updated_at": "2026-05-24T03:45:12.660644+00:00",
+  "params": {
+    "problem_root": "numerics",
+    "output_pool": "solutions/pool",
+    "weighting": "ex-ante"
+  },
+  "tasks": [
+    {
+      "id": "ree_K3_g0025_t0100",
+      "problem": "ree_K3",
+      "status": "ready",
+      "gamma": 0.25,
+      "tau": 1.0,
+      "dps": 70,
+      "depends_on": [],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": ""
+    },
+    {
+      "id": "ree_K3_g0050_t0100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 1.0,
+      "dps": 70,
+      "depends_on": [
+        "ree_K3_g0025_t0100"
+      ],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "warm-start from previous gamma at this tau"
+    },
+    {
+      "id": "ree_K3_g0100_t0100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 1.0,
+      "dps": 70,
+      "depends_on": [
+        "ree_K3_g0050_t0100"
+      ],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "warm-start from previous gamma at this tau"
+    },
+    {
+      "id": "ree_K3_g0200_t0100",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 2.0,
+      "tau": 1.0,
+      "dps": 70,
+      "depends_on": [
+        "ree_K3_g0100_t0100"
+      ],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "warm-start from previous gamma at this tau"
+    },
+    {
+      "id": "ree_K3_g0025_t0200",
+      "problem": "ree_K3",
+      "status": "ready",
+      "gamma": 0.25,
+      "tau": 2.0,
+      "dps": 70,
+      "depends_on": [],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": ""
+    },
+    {
+      "id": "ree_K3_g0050_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 0.5,
+      "tau": 2.0,
+      "dps": 70,
+      "depends_on": [
+        "ree_K3_g0025_t0200"
+      ],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "warm-start from previous gamma at this tau"
+    },
+    {
+      "id": "ree_K3_g0100_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 1.0,
+      "tau": 2.0,
+      "dps": 70,
+      "depends_on": [
+        "ree_K3_g0050_t0200"
+      ],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "warm-start from previous gamma at this tau"
+    },
+    {
+      "id": "ree_K3_g0200_t0200",
+      "problem": "ree_K3",
+      "status": "blocked",
+      "gamma": 2.0,
+      "tau": 2.0,
+      "dps": 70,
+      "depends_on": [
+        "ree_K3_g0100_t0200"
+      ],
+      "checkpoint": null,
+      "result": null,
+      "claimed_by": null,
+      "claimed_at": null,
+      "completed_at": null,
+      "note": "warm-start from previous gamma at this tau"
+    }
+  ],
+  "deps_semantics": {
+    "default": "all",
+    "any": "warm-start from any one checkpoint"
+  },
+  "summary": {
+    "total": 8,
+    "ready": 2,
+    "claimed": 0,
+    "done": 0,
+    "bailed": 0,
+    "blocked": 6
+  },
+  "notes": [
+    "Schema: standards/runner/TASK_SCHEMA.md",
+    "Generated from numerics/ree_K3/spec.json (one task per (gamma,tau))."
+  ]
+}

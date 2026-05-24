@@ -1,0 +1,14 @@
+{
+  "tex": "fig_knife_edge",
+  "generated_at": "2026-05-24T03:47:59.135721+00:00",
+  "solutions": [
+    {
+      "problem": "ree_K3",
+      "version": "v0001",
+      "standards_methods_sha": "683ffc6357bbadd08deb64d5fa2c5630aff698cc"
+    }
+  ],
+  "figures": [
+    "figures/fig_knife_edge.pdf"
+  ]
+}
