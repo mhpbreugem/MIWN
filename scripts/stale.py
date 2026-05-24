@@ -48,6 +48,32 @@ def methods_pin() -> str:
     return ""
 
 
+_TREE_CACHE: dict = {}
+
+
+def methods_tree(sha: str | None = None) -> str:
+    """Tree hash of methods/solver at <sha> (or current submodule HEAD).
+
+    Comparing the methods *tree* (not the commit sha) means a Standards bump that
+    only touches runner/ or web/ — not the numerical methods — does NOT mark
+    existing solutions stale. A solution is stale only if the code that produces it
+    actually changed.
+    """
+    key = sha or "HEAD"
+    if key in _TREE_CACHE:
+        return _TREE_CACHE[key]
+    val = ""
+    try:
+        val = subprocess.run(
+            ["git", "-C", str(REPO / "standards"), "rev-parse", f"{key}:methods/solver"],
+            capture_output=True, text=True, check=True,
+        ).stdout.strip()
+    except Exception:
+        val = ""
+    _TREE_CACHE[key] = val
+    return val
+
+
 def load_json(path: Path):
     try:
         return json.loads(path.read_text())
@@ -67,7 +93,17 @@ def main() -> int:
               "(run: git submodule update --init).", file=sys.stderr)
         return 2
     short = pin[:10]
-    print(f"methods pin (standards submodule): {short}")
+    cur_tree = methods_tree(None)
+    print(f"methods pin (standards submodule): {short}"
+          + (f"  (methods tree {cur_tree[:10]})" if cur_tree else ""))
+
+    def is_stale(sha: str) -> bool:
+        if not sha:
+            return True
+        if not cur_tree:                 # can't read trees — fall back to commit-sha compare
+            return sha != pin
+        t = methods_tree(sha)
+        return t == "" or t != cur_tree  # stale if the methods/solver code actually differs
 
     # Index pool versions and their staleness.
     stale_versions: dict[tuple[str, str], str] = {}  # (problem, version) -> sha
@@ -80,7 +116,7 @@ def main() -> int:
             n_pool += 1
             sha = data.get("standards_methods_sha", "")
             key = (data.get("problem", meta.parents[1].name), data.get("version", meta.parent.name))
-            if sha != pin:
+            if is_stale(sha):
                 stale_versions[key] = sha
 
     # by-tex locks affected by a stale pin.
@@ -98,8 +134,8 @@ def main() -> int:
                 key = (s.get("problem"), s.get("version"))
                 if key in stale_versions:
                     reasons.append(f"{key[0]}/{key[1]} is stale")
-                if s.get("standards_methods_sha") and s["standards_methods_sha"] != pin:
-                    reasons.append(f"{key[0]}/{key[1]} lock sha {s['standards_methods_sha'][:10]} != pin")
+                if s.get("standards_methods_sha") and is_stale(s["standards_methods_sha"]):
+                    reasons.append(f"{key[0]}/{key[1]} lock sha {s['standards_methods_sha'][:10]} methods != pin")
             if reasons:
                 affected.append((stem, "; ".join(sorted(set(reasons)))))
 

@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import subprocess
 import sys
 import time
@@ -93,6 +94,9 @@ def main() -> None:
     ap.add_argument("--warm-start", default=None, help="halo-format .npz to warm-start from")
     ap.add_argument("--version", default=None)
     ap.add_argument("--task-id", default=None)
+    ap.add_argument("--worker-id", default=os.environ.get("WORKER_ID", "solve-1"))
+    ap.add_argument("--progress-rel", default=None,
+                    help="repo-relative progress dir (e.g. todo/progress) — enables live telemetry")
     args = ap.parse_args()
 
     gamma, tau, K = args.gamma, args.tau, 3
@@ -105,6 +109,27 @@ def main() -> None:
     gv, tv, Wv = np.full(K, gamma), np.full(K, tau), np.ones(K)
     print(f"[solve] {PROBLEM} {version} γ={gamma} τ={tau} G_inner={G_inner} pad={pad} "
           f"dps={WORKING_DPS} target={TOL_STR}", flush=True)
+
+    # live progress (enabled when the runner passes --progress-rel)
+    reporter = None
+    if args.progress_rel:
+        try:
+            sys.path.insert(0, str(REPO / "standards" / "runner"))
+            from progress import ProgressReporter  # noqa: PLC0415
+            reporter = ProgressReporter(
+                project="MIWN", task_id=task_id, worker_id=args.worker_id,
+                branch=os.environ.get("BRANCH", "main"), interval=120,
+                repo_root=REPO, progress_rel=args.progress_rel)
+            reporter.start()
+        except Exception as e:
+            print(f"[solve] progress reporter off ({e})", flush=True); reporter = None
+
+    def _finish(code=None):
+        if reporter:
+            try: reporter.stop(delete=True)
+            except Exception: pass
+        if code is not None:
+            sys.exit(code)
 
     halo = init_no_learning_K3(u_full, tv, gv, Wv)
 
@@ -119,14 +144,17 @@ def main() -> None:
     # ---- float64 Anderson handoff (~1e-4) ----
     from scipy.optimize import anderson, NoConvergence  # noqa: PLC0415
     P_full = replace_inner(halo, P_inner_seed, inner_lo, inner_hi)
-    best = [P_full.copy(), float("inf")]
+    best = [P_full.copy(), float("inf"), 0]
 
     def res(Pf):
         out = phi_full(Pf)
         f = float(np.max(np.abs(extract_inner(out, inner_lo, inner_hi)
                                 - extract_inner(Pf, inner_lo, inner_hi))))
+        best[2] += 1
         if f < best[1]:
             best[0], best[1] = Pf.copy(), f
+        if reporter:
+            reporter.update(iter=best[2], ftol=f, phase="anderson")
         return out - Pf
 
     with warnings.catch_warnings():
@@ -144,7 +172,7 @@ def main() -> None:
         P_inner_final, halo, u_full, inner_lo, inner_hi, tv, gv, Wv, kernel_h,
         phi_float64_fn=phi_full, dps=WORKING_DPS, tol_str=TOL_STR,
         max_newton=50, lgmres_tol=1e-10, lgmres_inner_m=30, lgmres_outer=10,
-        reporter=None, P_inner_mp_str=P_inner_mp_str_warm, max_wall_s=args.max_seconds,
+        reporter=reporter, P_inner_mp_str=P_inner_mp_str_warm, max_wall_s=args.max_seconds,
     )
     one_minus_r2 = float(revelation_deficit_f128(P_inner_mp, u_grid_inner, tv, K))
     print(f"[solve] mp-Newton dps={WORKING_DPS}  ||F||={F_inf:.3e}  iters={n_mp}  "
@@ -153,16 +181,16 @@ def main() -> None:
     # ---- acceptance per Standards policy ----
     if F_inf > BAIL_THRESHOLD:
         print(f"[solve] BAIL: ||F||={F_inf:.3e} > {BAIL_THRESHOLD:.0e}", flush=True)
-        sys.exit(2)
+        _finish(2)
     nl = float(revelation_deficit_f128(extract_inner(halo, inner_lo, inner_hi), u_grid_inner, tv, K))
     if one_minus_r2 < 0.3 * nl:
         print(f"[solve] REJECT: 1-R²={one_minus_r2:.3e} << no-learning {nl:.3e} "
               f"(fully-revealing collapse)", flush=True)
-        sys.exit(3)
+        _finish(3)
     if F_inf > DONE_THRESHOLD:
         print(f"[solve] PARTIAL: ||F||={F_inf:.3e} > policy {DONE_THRESHOLD:.0e} "
               f"(not accepted; retry with more iters/precision)", flush=True)
-        sys.exit(4)
+        _finish(4)
 
     # ---- write immutable solution version ----
     vdir = REPO / "solutions" / "pool" / PROBLEM / version
@@ -192,6 +220,7 @@ def main() -> None:
     (vdir / "meta.json").write_text(json.dumps(meta, indent=2) + "\n")
     print(f"[solve] wrote {vdir.relative_to(REPO)}/", flush=True)
     update_registry(PROBLEM, version, task_id, sha, one_minus_r2, F_inf)
+    _finish()
 
 
 def update_registry(problem, version, task_id, sha, one_minus_r2, F_inf) -> None:
