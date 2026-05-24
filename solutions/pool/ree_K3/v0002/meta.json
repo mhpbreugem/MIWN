@@ -2,7 +2,7 @@
   "problem": "ree_K3",
   "version": "v0002",
   "created_at": "2026-05-24T04:18:20.968158+00:00",
-  "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+  "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
   "task_id": "ree_K3_g0025_t0200",
   "params": {
     "gamma": 0.25,
