@@ -1,6 +1,6 @@
 {
   "queue_version": 1,
-  "updated_at": "2026-05-24T20:42:28.937324Z",
+  "updated_at": "2026-05-24T20:44:24.543894Z",
   "params": {
     "problem_root": "numerics",
     "output_pool": "solutions/pool",
@@ -985,15 +985,15 @@
     {
       "id": "ree_K3_g0400_t0100",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "skip",
       "gamma": 4.0,
       "tau": 1.0,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
-      "result": null,
-      "claimed_by": "claude-2-26372185964",
-      "claimed_at": "2026-05-24T20:42:28.937310Z",
+      "result": {
+        "reason": "run_task: solver exited 4 for ree_K3_g0400_t0100"
+      },
       "completed_at": null,
       "note": ""
     },
@@ -1186,11 +1186,11 @@
   "summary": {
     "total": 77,
     "done": 2,
-    "ready": 37,
-    "claimed": 30,
+    "ready": 57,
+    "claimed": 9,
     "blocked": 0,
     "bailed": 0,
-    "skip": 8
+    "skip": 9
   },
   "notes": [
     "Schema: standards/runner/TASK_SCHEMA.md",
