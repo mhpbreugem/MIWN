@@ -72,12 +72,24 @@ def next_version(problem: str) -> str:
     return f"v{(max(existing) + 1) if existing else 1:04d}"
 
 
-def solve_fixed_point(sg: SymGrid, u_grid, gamma, tau, W, f_tol, max_evals, anderson_m):
-    """Anderson-accelerated fixed point F(P)=Phi(P)-P=0, tracking the best iterate."""
+class _SolveTimeout(Exception):
+    pass
+
+
+def solve_fixed_point(sg: SymGrid, u_grid, gamma, tau, W, f_tol, max_evals,
+                      anderson_m, max_seconds=120.0):
+    """Anderson-accelerated fixed point F(P)=Phi(P)-P=0, tracking the best iterate.
+
+    Wall-capped: if a point won't converge within max_seconds it returns the best
+    iterate found so far instead of hanging — so one stuck root-find never blocks a
+    worker draining the queue.
+    """
+    import time  # noqa: PLC0415
     from scipy.optimize import anderson, NoConvergence  # noqa: PLC0415
 
     P0 = sym_init_no_learning(sg, u_grid, tau, gamma, W)
     best = {"P": P0.copy(), "F": float("inf"), "n": 0}
+    t0 = time.perf_counter()
 
     def residual(P):
         F = sym_phi(P, sg, u_grid, tau, gamma, W) - P
@@ -85,6 +97,8 @@ def solve_fixed_point(sg: SymGrid, u_grid, gamma, tau, W, f_tol, max_evals, ande
         best["n"] += 1
         if f < best["F"]:
             best["P"], best["F"] = P.copy(), f
+        if time.perf_counter() - t0 > max_seconds:
+            raise _SolveTimeout()
         return F
 
     with warnings.catch_warnings():
@@ -92,8 +106,8 @@ def solve_fixed_point(sg: SymGrid, u_grid, gamma, tau, W, f_tol, max_evals, ande
         try:
             anderson(residual, P0, f_tol=f_tol, maxiter=max_evals,
                      M=anderson_m, line_search="armijo", verbose=False)
-        except NoConvergence:
-            pass  # best-iterate tracking handles non-convergence on coarse grids
+        except (NoConvergence, _SolveTimeout):
+            pass  # best-iterate tracking handles non-convergence / timeout
 
     P = best["P"]
     F_inf = float(np.max(np.abs(sym_phi(P, sg, u_grid, tau, gamma, W) - P)))
@@ -135,6 +149,8 @@ def main() -> None:
     ap.add_argument("--f-tol", type=float, default=1e-9)
     ap.add_argument("--max-evals", type=int, default=4000)
     ap.add_argument("--anderson-m", type=int, default=10)
+    ap.add_argument("--max-seconds", type=float, default=120.0,
+                    help="wall cap per solve; returns best iterate if exceeded (never hangs)")
     ap.add_argument("--version", default=None, help="vNNNN (default: next free)")
     ap.add_argument("--task-id", default=None)
     args = ap.parse_args()
@@ -148,7 +164,8 @@ def main() -> None:
     print(f"[solve] {PROBLEM} {version} γ={gamma} τ={tau} G={G} (n={sg.n} cells)", flush=True)
 
     P, F_inf, n_evals = solve_fixed_point(
-        sg, u_grid, gamma, tau, W, args.f_tol, args.max_evals, args.anderson_m
+        sg, u_grid, gamma, tau, W, args.f_tol, args.max_evals, args.anderson_m,
+        max_seconds=args.max_seconds,
     )
     m = sym_weighted_R2(P, sg, u_grid, tau)
     m["gamma"], m["tau"] = gamma, tau

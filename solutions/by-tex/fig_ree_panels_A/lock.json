@@ -4,12 +4,12 @@
   "solutions": [
     {
       "problem": "ree_K3",
-      "version": "v0006",
+      "version": "v0007",
       "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a"
     }
   ],
   "figures": [
     "figures/fig_ree_panels_A.pdf"
   ],
-  "note": "pin migrated from REZN @ 7f03509 (best-effort; confirm against figure source)"
+  "note": "pin migrated from REZN @ 7f03509 (best-effort; confirm against figure source) | re-pinned to documented seed v0007 (G20 umax5 mp300)"
 }

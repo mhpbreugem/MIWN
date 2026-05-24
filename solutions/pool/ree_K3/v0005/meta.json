@@ -14,8 +14,8 @@
     "UMAX": 4.0
   },
   "metrics": {
-    "F_inf": "1.3332774074",
-    "F_med": "4.2412506237"
+    "F_inf": "1.333e-131",
+    "F_med": "4.241e-134"
   },
   "data": [
     "data/solution.npz"
