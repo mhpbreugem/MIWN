@@ -9,7 +9,9 @@ name: solve
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/30 * * * *"   # every 30 min — adjust cadence here
+    - cron: "*/5 * * * *"   # every 5 min (GitHub's minimum). Within a run the 2
+                            # workers scan back-to-back continuously, so coverage is
+                            # effectively gap-free while work exists.
 
 concurrency:
   group: solve
