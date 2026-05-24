@@ -1,6 +1,6 @@
 {
   "registry_version": 1,
-  "updated_at": "2026-05-24T04:22:57.994892+00:00",
+  "updated_at": "2026-05-24T20:09:17.508587+00:00",
   "solutions": [
     {
       "problem": "ree_K3",
@@ -46,9 +46,18 @@
       "created_at": "2026-05-24T04:22:57.994534+00:00",
       "F_inf": "7.443e-119",
       "provenance": "REZN@7f03509:posterior_v3_G20_umax5_notrim_mp300.json"
+    },
+    {
+      "problem": "ree_K3",
+      "version": "v0008",
+      "task_id": "ree_K3_g0050_t1100",
+      "standards_methods_sha": "6e28f408100dbc837ee770b96c7f6267458db53d",
+      "created_at": "2026-05-24T20:09:17.508574+00:00",
+      "one_minus_R2": 0.08428443,
+      "F_inf": "7.080e-22"
     }
   ],
   "counters": {
-    "ree_K3": 7
+    "ree_K3": 8
   }
 }
