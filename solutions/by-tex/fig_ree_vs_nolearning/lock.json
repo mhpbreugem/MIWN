@@ -1,5 +1,5 @@
 {
-  "tex": "fig_knife_edge",
+  "tex": "fig_ree_vs_nolearning",
   "generated_at": "2026-05-24T04:23:47.905718+00:00",
   "solutions": [
     {
@@ -9,7 +9,7 @@
     }
   ],
   "figures": [
-    "figures/fig_knife_edge.pdf"
+    "figures/fig_ree_vs_nolearning.pdf"
   ],
   "note": "pin migrated from REZN @ 7f03509 (best-effort; confirm against figure source)"
 }

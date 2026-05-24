@@ -1,0 +1,34 @@
+{
+  "problem": "ree_K3",
+  "version": "v0006",
+  "created_at": "2026-05-24T04:22:57.972987+00:00",
+  "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+  "task_id": "rezn_posterior_v3_G20_mp300_notrim",
+  "params": {
+    "gamma": 0.5,
+    "tau": 2.0,
+    "K": 3,
+    "G": 20,
+    "dps": 300,
+    "trim": 0.0,
+    "UMAX": 4.0
+  },
+  "metrics": {
+    "F_inf": "0.0000000072",
+    "F_med": "0.0000000000"
+  },
+  "data": [
+    "data/solution.npz"
+  ],
+  "figures": [],
+  "solver": {
+    "engine": "mpmath-newton (REZN halo core)",
+    "precision": "mp-300",
+    "entrypoint": "standards/methods/solver (vendored REZN code/)"
+  },
+  "provenance": {
+    "migrated_from": "mhpbreugem/REZN",
+    "rezn_commit": "7f03509",
+    "source_file": "results/full_ree/posterior_v3_G20_mp300_notrim.json"
+  }
+}
