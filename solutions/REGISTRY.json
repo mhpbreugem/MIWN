@@ -6,7 +6,7 @@
       "problem": "ree_K3",
       "version": "v0002",
       "task_id": "ree_K3_g0025_t0200",
-      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+      "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
       "created_at": "2026-05-24T04:18:20.968502+00:00",
       "one_minus_R2": 3.248e-05,
       "F_inf": "9.615e-10"
@@ -15,7 +15,7 @@
       "problem": "ree_K3",
       "version": "v0003",
       "task_id": "rezn_posterior_v3_G15_mp200",
-      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+      "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
       "created_at": "2026-05-24T04:22:57.919277+00:00",
       "F_inf": "4.159e-91",
       "provenance": "REZN@7f03509:posterior_v3_G15_mp200.json"
@@ -24,7 +24,7 @@
       "problem": "ree_K3",
       "version": "v0004",
       "task_id": "rezn_posterior_v3_G15_umax5_trim05_mp300",
-      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+      "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
       "created_at": "2026-05-24T04:22:57.933359+00:00",
       "F_inf": "1.016e-130",
       "provenance": "REZN@7f03509:posterior_v3_G15_umax5_trim05_mp300.json"
@@ -33,7 +33,7 @@
       "problem": "ree_K3",
       "version": "v0005",
       "task_id": "rezn_posterior_v3_G18_mp300_notrim",
-      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+      "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
       "created_at": "2026-05-24T04:22:57.951322+00:00",
       "F_inf": "1.333e-131",
       "provenance": "REZN@7f03509:posterior_v3_G18_mp300_notrim.json"
@@ -42,7 +42,7 @@
       "problem": "ree_K3",
       "version": "v0006",
       "task_id": "rezn_posterior_v3_G20_mp300_notrim",
-      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+      "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
       "created_at": "2026-05-24T04:22:57.972987+00:00",
       "F_inf": "7.200e-09",
       "provenance": "REZN@7f03509:posterior_v3_G20_mp300_notrim.json"
@@ -51,7 +51,7 @@
       "problem": "ree_K3",
       "version": "v0007",
       "task_id": "rezn_posterior_v3_G20_umax5_notrim_mp300",
-      "standards_methods_sha": "0ea37e758594409fcd52f6094686b8669756683a",
+      "standards_methods_sha": "521ac7d28edcfcc5466dc058729576c8e302103d",
       "created_at": "2026-05-24T04:22:57.994534+00:00",
       "F_inf": "7.443e-119",
       "provenance": "REZN@7f03509:posterior_v3_G20_umax5_notrim_mp300.json"

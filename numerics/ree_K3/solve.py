@@ -171,6 +171,18 @@ def main() -> None:
     m["gamma"], m["tau"] = gamma, tau
     print(f"[solve] done  evals={n_evals}  ||F||={F_inf:.3e}  1-R²={m['1-R2']:.6e}", flush=True)
 
+    # ---- branch guard --------------------------------------------------------
+    # Cold-start collapses onto the fully-revealing root (1-R²->0), not the
+    # strong price-revelation branch. Reject such a solve (exit nonzero so the
+    # runner parks the task) rather than committing wrong-branch data.
+    P0 = sym_init_no_learning(sg, u_grid, tau, gamma, W)
+    nl = float(sym_weighted_R2(P0, sg, u_grid, tau)["1-R2"])
+    if m["1-R2"] < 0.5 * nl:
+        print(f"[solve] REJECT: 1-R²={m['1-R2']:.3e} << no-learning {nl:.3e} "
+              f"(fully-revealing collapse). Needs PR-branch continuation from the seed.",
+              flush=True)
+        sys.exit(3)
+
     # ---- write the immutable solution version --------------------------------
     vdir = REPO / "solutions" / "pool" / PROBLEM / version
     (vdir / "data").mkdir(parents=True, exist_ok=True)
@@ -184,7 +196,12 @@ def main() -> None:
         F_inf=F_inf, one_minus_R2=m["1-R2"], slope=m["slope"], intercept=m["intercept"],
     )
     fig_path = vdir / "figure" / "fig_knife_edge.pdf"
-    make_figure(fig_path, P, sg, u_grid, tau, m)
+    try:
+        make_figure(fig_path, P, sg, u_grid, tau, m)
+        figures = ["figure/fig_knife_edge.pdf"]
+    except Exception as e:   # matplotlib not installed on the runner — data is the deliverable
+        print(f"[solve] figure skipped ({e})", flush=True)
+        figures = []
 
     sha = standards_sha()
     meta = {
@@ -196,7 +213,7 @@ def main() -> None:
         "params": {"gamma": gamma, "tau": tau, "K": 3, "G": G, "W": W},
         "metrics": {"F_inf": f"{F_inf:.3e}", "one_minus_R2": round(m["1-R2"], 8)},
         "data": ["data/solution.npz"],
-        "figures": ["figure/fig_knife_edge.pdf"],
+        "figures": figures,
         "solver": {
             "engine": "symmetric-anderson (contour_KN_sym)",
             "precision": "float64",
