@@ -1,6 +1,6 @@
 {
   "queue_version": 1,
-  "updated_at": "2026-05-24T23:07:27.763Z",
+  "updated_at": "2026-05-24T23:08:18.978396Z",
   "params": {
     "problem_root": "numerics",
     "output_pool": "solutions/pool",
@@ -348,7 +348,7 @@
     {
       "id": "ree_K3_g0050_t0040",
       "problem": "ree_K3",
-      "status": "ready",
+      "status": "claimed",
       "gamma": 0.5,
       "tau": 0.4,
       "dps": 32,
@@ -356,7 +356,9 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": ""
+      "note": "",
+      "claimed_by": "claude-2-26374783399",
+      "claimed_at": "2026-05-24T23:08:18.978380Z"
     },
     {
       "id": "ree_K3_g0050_t0050",
@@ -1103,7 +1105,7 @@
   },
   "notes": [
     "Schema: standards/runner/TASK_SCHEMA.md",
-    "All points cold-start independently (parallel) — the halo+mp solver reaches the PR branch from no-learning.",
+    "All points cold-start independently (parallel) \u2014 the halo+mp solver reaches the PR branch from no-learning.",
     ">=20 points per sweep line; points that miss the 1e-20 policy are skipped."
   ]
 }
