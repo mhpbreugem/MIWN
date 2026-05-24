@@ -1,6 +1,6 @@
 {
   "queue_version": 1,
-  "updated_at": "2026-05-24T23:22:22.528120Z",
+  "updated_at": "2026-05-24T23:22:53.197Z",
   "params": {
     "problem_root": "numerics",
     "output_pool": "solutions/pool",
@@ -84,16 +84,14 @@
     {
       "id": "ree_K3_g0010_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.1,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T22:56:10.704978Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0015_t0200",
@@ -221,35 +219,31 @@
     {
       "id": "ree_K3_g0160_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1.6,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T22:54:14.870459Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0200_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 2,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T22:54:32.847162Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0250_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 2.5,
       "tau": 2,
       "dps": 32,
@@ -257,9 +251,7 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:06:37.966386Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0320_t0200",
@@ -327,16 +319,14 @@
     {
       "id": "ree_K3_g1000_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 10,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:03:17.337129Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0050_t0030",
@@ -412,37 +402,32 @@
     {
       "id": "ree_K3_g0050_t0100",
       "problem": "ree_K3",
-      "status": "skip",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 1,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
-      "result": {
-        "reason": "run_task: solver exited 4 for ree_K3_g0050_t0100"
-      },
       "completed_at": null,
       "note": ""
     },
     {
       "id": "ree_K3_g0050_t0130",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 1.3,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "result": null,
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:03:30.385599Z",
       "completed_at": null,
       "note": ""
     },
     {
       "id": "ree_K3_g0050_t0160",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 1.6,
       "dps": 32,
@@ -450,9 +435,7 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T22:52:47.459956Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0050_t0250",
@@ -577,7 +560,7 @@
     {
       "id": "ree_K3_g0050_t1300",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 13,
       "dps": 32,
@@ -585,9 +568,7 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:00:04.949040Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0050_t1500",
@@ -646,16 +627,14 @@
     {
       "id": "ree_K3_g0100_t0065",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 0.65,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T22:55:57.598535Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0100_t0080",
@@ -725,16 +704,14 @@
     {
       "id": "ree_K3_g0100_t0300",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 3,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T22:57:46.503561Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0100_t0350",
@@ -795,16 +772,14 @@
     {
       "id": "ree_K3_g0100_t0750",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 7.5,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:01:49.825026Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0100_t0900",
@@ -835,16 +810,14 @@
     {
       "id": "ree_K3_g0100_t1300",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 13,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T22:59:29.244051Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0100_t1500",
@@ -903,7 +876,7 @@
     {
       "id": "ree_K3_g0400_t0065",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 0.65,
       "dps": 32,
@@ -911,9 +884,7 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T22:58:10.576232Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0400_t0080",
@@ -1025,16 +996,14 @@
     {
       "id": "ree_K3_g0400_t0500",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 5,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:01:13.502208Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0400_t0600",
@@ -1131,7 +1100,7 @@
   },
   "notes": [
     "Schema: standards/runner/TASK_SCHEMA.md",
-    "All points cold-start independently (parallel) \u2014 the halo+mp solver reaches the PR branch from no-learning.",
+    "All points cold-start independently (parallel) — the halo+mp solver reaches the PR branch from no-learning.",
     ">=20 points per sweep line; points that miss the 1e-20 policy are skipped."
   ]
 }
