@@ -1,38 +1,54 @@
 name: solve
 
-# Two GitHub Actions workers continuously scan the queue and take any free task:
-# claim (git-race lock) -> solve at double-double precision (||F|| < 1e-20) ->
-# commit the solutions/pool/<problem>/vNNNN/ result back. Runs on a schedule (so
-# it keeps scanning automatically) and on manual dispatch. Concurrency ensures at
-# most one run (= 2 workers) is active at a time, so there are never more than two.
+# A pool of N GitHub Actions workers continuously scans the queue and takes any
+# free task: claim (git-race lock) -> solve at double-double precision
+# (||F|| < 1e-20) -> commit the result back. N is read from
+# todo/runner.config.json ("workers") and editable from the dashboard. Runs on a
+# schedule so it keeps going on its own; concurrency keeps at most one run (= N
+# workers) active at a time.
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: "*/5 * * * *"   # every 5 min (GitHub's minimum). Within a run the 2
-                            # workers scan back-to-back continuously, so coverage is
-                            # effectively gap-free while work exists.
+    - cron: "*/5 * * * *"   # every 5 min (GitHub's minimum); within a run workers loop continuously
 
 concurrency:
   group: solve
-  cancel-in-progress: false   # a new run waits; never >2 workers at once
+  cancel-in-progress: false
 
 permissions:
   contents: write
 
 jobs:
-  # Release any claims orphaned by a previous run that hit the job time limit,
-  # so their tasks become free again before the workers scan.
+  # Read N (target workers) from todo/runner.config.json -> dynamic matrix.
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.n.outputs.matrix }}
+      count: ${{ steps.n.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: n
+        run: |
+          python3 - >> "$GITHUB_OUTPUT" <<'PY'
+          import json
+          try:
+              n = int(json.load(open("todo/runner.config.json")).get("workers", 2))
+          except Exception:
+              n = 2
+          n = max(0, min(16, n))
+          print(f"count={n}")
+          print("matrix=" + json.dumps({"worker": [f"claude-{i}" for i in range(1, n + 1)]}))
+          PY
+
+  # Release claims orphaned by a previous run that hit its time limit.
   prep:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with: { submodules: recursive, fetch-depth: 0 }
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: standards/methods/requirements.txt
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: standards/methods/requirements.txt }
       - run: pip install -r standards/methods/requirements.txt
       - name: Release stale claims (older than 20 min)
         env:
@@ -46,24 +62,20 @@ jobs:
           python3 standards/runner/claim_task.py release \
             --project MIWN --queue-path todo/TASK_QUEUE.json --max-age-hours 0.34 || true
 
-  # Two workers, each looping claim -> solve -> repeat until no free task or its
-  # time budget (kept under timeout-minutes so a task never gets killed mid-solve).
+  # N workers, each looping claim -> solve -> repeat until no free task or budget.
   solve:
-    needs: prep
+    needs: [setup, prep]
+    if: ${{ needs.setup.outputs.count != '0' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 50
+    timeout-minutes: 55
     strategy:
       fail-fast: false
-      matrix:
-        worker: [claude-1, claude-2]
+      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
     steps:
       - uses: actions/checkout@v4
         with: { submodules: recursive, fetch-depth: 0 }
       - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-          cache: pip
-          cache-dependency-path: standards/methods/requirements.txt
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: standards/methods/requirements.txt }
       - run: pip install -r standards/methods/requirements.txt
       - name: Configure git identity
         run: |
@@ -77,13 +89,13 @@ jobs:
           WORKER_ID: ${{ matrix.worker }}-${{ github.run_id }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          END=$(( $(date +%s) + 42*60 ))   # stop ~42 min in, before the 50-min job timeout
+          END=$(( $(date +%s) + 45*60 ))   # stop ~45 min in, before the 55-min job timeout
           while [ "$(date +%s)" -lt "$END" ]; do
             set +e
-            python3 standards/runner/run_task.py --config todo/runner.config.json
+            # --max-seconds 600: give the mpmath-Newton phase enough time to reach
+            # the 1e-20 policy at G_inner=10 (90s was too short -> spurious skips).
+            python3 standards/runner/run_task.py --config todo/runner.config.json --max-seconds 600
             rc=$?
             set -e
             if [ "$rc" -eq 3 ]; then echo "no free task — queue drained for now"; break; fi
-            # rc 0 (took+solved), 1 (claim race — another worker got it), 2/4 (bail/partial),
-            # 3 handled above: in all non-3 cases keep scanning.
           done
