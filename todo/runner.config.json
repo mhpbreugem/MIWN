@@ -11,5 +11,9 @@
   "problems_dir": "numerics",
   "output_pool": "solutions/pool",
   "write_back": true,
-  "resources": { "vm": "e2-medium-spot", "max_run_hours": 1 }
+  "resources": {
+    "vm": "e2-medium-spot",
+    "max_run_hours": 1
+  },
+  "workers": 2
 }
