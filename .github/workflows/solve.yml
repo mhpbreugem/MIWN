@@ -67,7 +67,7 @@ jobs:
     needs: [setup, prep]
     if: ${{ needs.setup.outputs.count != '0' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 55
+    timeout-minutes: 18
     strategy:
       fail-fast: false
       matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
@@ -89,7 +89,7 @@ jobs:
           WORKER_ID: ${{ matrix.worker }}-${{ github.run_id }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          END=$(( $(date +%s) + 45*60 ))   # stop ~45 min in, before the 55-min job timeout
+          END=$(( $(date +%s) + 12*60 ))   # stop ~12 min in, before the 18-min job timeout
           while [ "$(date +%s)" -lt "$END" ]; do
             set +e
             # --max-seconds 600: give the mpmath-Newton phase enough time to reach
