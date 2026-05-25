@@ -2,9 +2,20 @@
   "task_id": "ree_K3_g0050_t0050",
   "worker_id": "claude-4",
   "started_at": "2026-05-25T01:20:18Z",
-  "last_update": "2026-05-25T01:20:18Z",
-  "iter": null,
-  "ftol": null,
-  "ftol_history": [],
-  "extra": {}
+  "last_update": "2026-05-25T01:20:22Z",
+  "iter": 258,
+  "ftol": "4.455924e-05",
+  "ftol_history": [
+    "2.426562e-03",
+    "9.223805e-04",
+    "1.021861e-03",
+    "5.062239e-04",
+    "4.390495e-04",
+    "3.792397e-04",
+    "1.660888e-04",
+    "4.455924e-05"
+  ],
+  "extra": {
+    "phase": "anderson"
+  }
 }
