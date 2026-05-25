@@ -1,0 +1,19 @@
+{
+  "gamma": 6.5,
+  "tau": 2.0,
+  "anchor": "solutions/pool/ree_K3/v0010/data/solution.npz",
+  "path": [
+    4.0,
+    4.833333333333333,
+    5.666666666666667,
+    6.5
+  ],
+  "F_inf": "4.989e-24",
+  "one_minus_R2": 0.0826103527686976,
+  "newton": 7,
+  "accepted": true,
+  "policy": {
+    "dps": 32,
+    "target": "1e-20"
+  }
+}

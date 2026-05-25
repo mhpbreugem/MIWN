@@ -1,0 +1,97 @@
+{
+  "anchor": "solutions/pool/ree_K3/v0010/data/solution.npz",
+  "gammas": [
+    2.5,
+    4.0,
+    6.5
+  ],
+  "taus": [
+    1.0,
+    2.0,
+    4.0
+  ],
+  "nodes": [
+    {
+      "gamma": 4.0,
+      "tau": 2.0,
+      "F_inf": null,
+      "one_minus_R2": null,
+      "newton": 0,
+      "accepted": true,
+      "wall_s": 0.0,
+      "note": "anchor"
+    },
+    {
+      "gamma": 2.5,
+      "tau": 2.0,
+      "F_inf": 1.0524017504723408e-21,
+      "one_minus_R2": 0.08168010214251983,
+      "newton": 5,
+      "accepted": true,
+      "wall_s": 169.7
+    },
+    {
+      "gamma": 6.5,
+      "tau": 2.0,
+      "F_inf": 4.989285955442858e-24,
+      "one_minus_R2": 0.0826103527686976,
+      "newton": 7,
+      "accepted": true,
+      "wall_s": 229.9
+    },
+    {
+      "gamma": 2.5,
+      "tau": 1.0,
+      "F_inf": 2.767906411339646e-21,
+      "one_minus_R2": 0.06463512511113115,
+      "newton": 6,
+      "accepted": true,
+      "wall_s": 212.7
+    },
+    {
+      "gamma": 2.5,
+      "tau": 4.0,
+      "F_inf": 7.085088990358985e-25,
+      "one_minus_R2": 0.09257890055271496,
+      "newton": 4,
+      "accepted": true,
+      "wall_s": 133.5
+    },
+    {
+      "gamma": 4.0,
+      "tau": 1.0,
+      "F_inf": 3.8544520568136136e-23,
+      "one_minus_R2": 0.0695829216972106,
+      "newton": 7,
+      "accepted": true,
+      "wall_s": 242.0
+    },
+    {
+      "gamma": 4.0,
+      "tau": 4.0,
+      "F_inf": 8.39585633422571e-25,
+      "one_minus_R2": 0.09179246023316719,
+      "newton": 4,
+      "accepted": true,
+      "wall_s": 130.6
+    },
+    {
+      "gamma": 6.5,
+      "tau": 1.0,
+      "F_inf": 1.6824219563051808e-22,
+      "one_minus_R2": 0.06554150680478629,
+      "newton": 6,
+      "accepted": true,
+      "wall_s": 209.9
+    },
+    {
+      "gamma": 6.5,
+      "tau": 4.0,
+      "F_inf": 7.781372334186011e-25,
+      "one_minus_R2": 0.0912840746508794,
+      "newton": 4,
+      "accepted": true,
+      "wall_s": 131.9
+    }
+  ]
+}

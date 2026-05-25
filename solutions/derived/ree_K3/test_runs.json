@@ -1,0 +1,57 @@
+{
+  "anchor": "v0010",
+  "anchor_gamma": 4.0,
+  "anchor_tau": 2.0,
+  "runs": [
+    {
+      "gamma": 8.0,
+      "tau": 2.0,
+      "F_inf": 2.153096225836704e-21,
+      "one_minus_R2": 0.0827198065398983,
+      "newton": 6,
+      "accepted": true,
+      "wall_s": 192.2,
+      "label": "gamma up large (dg=+4)"
+    },
+    {
+      "gamma": 1.0,
+      "tau": 2.0,
+      "F_inf": 1.6708739505134377e-21,
+      "one_minus_R2": 0.07966921349889847,
+      "newton": 8,
+      "accepted": true,
+      "wall_s": 265.0,
+      "label": "gamma down large (dg=-3)"
+    },
+    {
+      "gamma": 4.0,
+      "tau": 5.0,
+      "F_inf": 2.7793484945346203e-21,
+      "one_minus_R2": 0.08541341857948802,
+      "newton": 4,
+      "accepted": true,
+      "wall_s": 129.7,
+      "label": "tau up (dt=+3)"
+    },
+    {
+      "gamma": 4.0,
+      "tau": 0.8,
+      "F_inf": 1.8277462960702697e-24,
+      "one_minus_R2": 0.044205937492535145,
+      "newton": 8,
+      "accepted": true,
+      "wall_s": 281.8,
+      "label": "tau down (dt=-1.2)"
+    },
+    {
+      "gamma": 8.0,
+      "tau": 4.0,
+      "F_inf": 1.2306277467678453e-24,
+      "one_minus_R2": 0.09113225579928488,
+      "newton": 4,
+      "accepted": true,
+      "wall_s": 130.2,
+      "label": "diagonal (gamma up then tau up)"
+    }
+  ]
+}
