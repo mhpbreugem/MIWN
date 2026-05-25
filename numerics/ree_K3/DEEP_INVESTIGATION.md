@@ -87,6 +87,26 @@ h=0.033: 0.043 = 0.026 scatter + 0.017 Jensen. At the no-noise REE both are 0.
 - `lineint_coarea.py` direct contour line integral with a C2 spline per scan
   line: sigma(T*) is a fixed point to 2e-16 (gamma=1,tau=0.5).
 
+## The deepest nuance: no-trade (Grossman) vs partial-revelation-with-trade
+
+sigma(T*) is a **no-trade** equilibrium: every agent's posterior equals the
+price, so demand = W*(E-1)/D with E=1 => x=0 => trading volume = 0. The paper's
+deficit solutions have **positive volume** (e.g. g100_t0400 stores TV=0.625) and
+heterogeneous posteriors -- a partial-revelation-WITH-trade state, which exists
+only at h>0 (the kernel). As h->0 it converges to the no-trade fully-revealing
+sigma(T*).
+
+This is exactly the classical Grossman / no-trade picture: without noise the
+competitive REE is fully revealing and supports no trade; sustaining trade and a
+revelation deficit requires a friction (noise). The kernel bandwidth is that
+friction here. So "market inefficiency without noise" holds only in the sense
+that the kernel bandwidth -- a numerical noise surrogate -- is nonzero; in the
+genuine h=0 limit the market is fully revealing (and trade-free).
+
+Whether the no-trade fully-revealing equilibrium or the with-trade partial one is
+the economically relevant object is the open *interpretive* question; the
+numerics are unambiguous that the deficit is carried by h>0.
+
 ## Caveats / open edges
 
 - The bandwidth-free contour maps are non-smooth in max-norm (worst cell floors
