@@ -1,0 +1,10 @@
+{
+  "task_id": "ree_K3_g0100_t0350",
+  "worker_id": "claude-3",
+  "started_at": "2026-05-25T00:59:22Z",
+  "last_update": "2026-05-25T00:59:22Z",
+  "iter": null,
+  "ftol": null,
+  "ftol_history": [],
+  "extra": {}
+}
