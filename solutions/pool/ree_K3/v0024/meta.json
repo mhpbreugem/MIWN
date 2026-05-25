@@ -1,0 +1,29 @@
+{
+  "problem": "ree_K3",
+  "version": "v0024",
+  "created_at": "2026-05-25T00:27:41.199455+00:00",
+  "standards_methods_sha": "ed7bbca57eda473691ec4776324bb5137e736f4f",
+  "task_id": "ree_K3_g0040_t0200",
+  "params": {
+    "gamma": 0.4,
+    "tau": 2.0,
+    "K": 3,
+    "G_inner": 10,
+    "pad": 4,
+    "dps": 32
+  },
+  "metrics": {
+    "F_inf": "6.854e-21",
+    "one_minus_R2": 0.11102693
+  },
+  "data": [
+    "data/solution.npz"
+  ],
+  "figures": [],
+  "solver": {
+    "engine": "halo + mpmath-newton",
+    "precision": "double-double (dps=32)",
+    "entrypoint": "numerics/ree_K3/solve.py",
+    "n_newton": 5
+  }
+}
