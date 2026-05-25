@@ -31,16 +31,18 @@ def main():
     def phi_in(Pin):
         Pf = replace_inner(halo, Pin, lo, hi)
         return extract_inner(phi_lineint(Pf, u, lo, hi, tv, gv, Wv), lo, hi)
-    log(f"Bandwidth-free smooth line-integral map, gamma={gamma} tau={tau} G={G}")
-    # damped Picard with reporting (each phi ~ seconds)
-    P = P0.copy(); t0 = time.time()
-    for it in range(60):
-        Q = phi_in(P); F = float(np.max(np.abs(Q - P)))
-        if it % 3 == 0 or F < 1e-10:
-            log(f"  picard it={it:3d} ||F||={F:.3e} 1-R2={deficit(P,u[lo:hi],tau):.2e} t={time.time()-t0:.0f}s")
-        if F < 1e-11: break
-        P = 0.5 * P + 0.5 * Q
-    log(f"  FINAL ||F||={float(np.max(np.abs(phi_in(P)-P))):.3e}  1-R2={deficit(P,u[lo:hi],tau):.3e}")
+    log(f"Bandwidth-free smooth line-integral map (ANDERSON), gamma={gamma} tau={tau} G={G}")
+    from ode_sweep import _anderson_step
+    P = P0.ravel().copy(); Fh, Ph = [], []; best = (P.copy(), 1e9); t0 = time.time()
+    for it in range(80):
+        Q = phi_in(P.reshape(shape)).ravel(); F = Q - P; res = float(np.max(np.abs(F)))
+        if res < best[1]: best = (P.copy(), res)
+        if it % 2 == 0 or res < 1e-11:
+            log(f"  anderson it={it:3d} ||F||={res:.3e} 1-R2={deficit(P.reshape(shape),u[lo:hi],tau):.2e} t={time.time()-t0:.0f}s")
+        if res < 1e-12: break
+        Fh.append(F.copy()); Ph.append(P.copy()); P = _anderson_step(Fh, Ph, 6); P = np.clip(P, 1e-9, 1 - 1e-9)
+    P = best[0].reshape(shape)
+    log(f"  FINAL best ||F||={best[1]:.3e}  1-R2={deficit(P,u[lo:hi],tau):.3e}")
     # compare to exact sigma(T*)
     U1, U2, U3 = np.meshgrid(u[lo:hi], u[lo:hi], u[lo:hi], indexing="ij")
     Pexact = 1 / (1 + np.exp(-tau * (U1 + U2 + U3)))
