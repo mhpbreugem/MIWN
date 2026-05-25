@@ -15,5 +15,5 @@
     "vm": "e2-medium-spot",
     "max_run_hours": 1
   },
-  "workers": 2
+  "workers": 3
 }
