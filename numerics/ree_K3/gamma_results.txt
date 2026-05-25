@@ -1,0 +1,9 @@
+Bandwidth-free (cubic co-area, h=0), cold-start, G=16, tau=0.5.  ||F||~1e-4 (contour floor).
+  lin = linear 1-R2 ;  scatter = 1-R2 vs poly5(Sigma u) = TRUE revelation deficit ; Jensen = lin-scatter
+   gamma=0.3   lin=0.00147  scatter=0.00050  Jensen=0.00097
+   gamma=0.5   lin=0.00119  scatter=0.00030  Jensen=0.00089
+   gamma=1.0   lin=0.00104  scatter=0.00025  Jensen=0.00079
+   gamma=2.0   lin=0.00100  scatter=0.00028  Jensen=0.00073
+Finding: lower gamma -> more curvature (Jensen) and slightly more scatter, but all
+tiny (<0.0015).  Contours track Sigma u=const with only mild low-gamma bending at the
+tails (see gamma_contours.png).  Caveat: cold-start (no-learning) branch only.
