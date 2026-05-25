@@ -249,14 +249,16 @@
     {
       "id": "ree_K3_g0200_t0200",
       "problem": "ree_K3",
-      "status": "ready",
+      "status": "claimed",
       "gamma": 2,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": ""
+      "note": "",
+      "claimed_by": "claude-2",
+      "claimed_at": "2026-05-25T01:13:17.897265Z"
     },
     {
       "id": "ree_K3_g0250_t0200",
@@ -1276,8 +1278,8 @@
   "summary": {
     "total": 77,
     "done": 40,
-    "ready": 32,
-    "claimed": 3,
+    "ready": 31,
+    "claimed": 4,
     "blocked": 0,
     "bailed": 0,
     "skip": 2
