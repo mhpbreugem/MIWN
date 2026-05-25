@@ -1,0 +1,11 @@
+(1) Is each stored solution a KERNEL fixed point?  (du, h=0.05*du)
+  g100_t0400 g=1.0 tau=4.0 du=0.500 h=0.0250: res(stored)@h=3.77e-15 @2h=1.52e-01 @h/2=3.48e-01 | res(sigmaT*)@h=4.42e-02
+  g100_t0300 g=1.0 tau=3.0 du=0.500 h=0.0250: res(stored)@h=3.66e-15 @2h=1.07e-01 @h/2=2.07e-01 | res(sigmaT*)@h=3.15e-02
+  g025_t0300 g=0.25 tau=3.0 du=0.500 h=0.0250: res(stored)@h=3.66e-15 @2h=5.77e-02 @h/2=3.29e-01 | res(sigmaT*)@h=3.32e-02
+  g050_t0300 g=0.5 tau=3.0 du=0.545 h=0.0273: res(stored)@h=3.61e-15 @2h=1.24e-01 @h/2=2.96e-01 | res(sigmaT*)@h=2.71e-02
+
+(2) deficit(h) at gamma=1,tau=4 (FPF point), kernel map, refine h->0:
+   h=0.0385 (h/du=0.050)  1-R2=0.09007  res=9.9e-11
+   h=0.0192 (h/du=0.025)  1-R2=0.08995  res=7.9e-11
+   h=0.0092 (h/du=0.012)  1-R2=0.08932  res=4.3e-12
+   h=0.0046 (h/du=0.006)  1-R2=0.08620  res=8.7e-11

@@ -1,0 +1,23 @@
+LOOP A: cheap residual diagnostics (which map has which fixed point?)
+
+=== g100_t0400 gamma=1.0 tau=4.0 G=21 | stored 1-R2=0.09563 scat=0.01600 ===
+   residual of STORED   under weightless=3.74e-01  weighted=3.76e-01
+   residual of sigma(T*) under weightless=5.79e-05  weighted=5.44e-05
+
+=== g100_t0300 gamma=1.0 tau=3.0 G=21 | stored 1-R2=0.09674 scat=0.01616 ===
+   residual of STORED   under weightless=2.04e-01  weighted=3.01e-01
+   residual of sigma(T*) under weightless=1.00e-12  weighted=1.00e-12
+
+=== g025_t0300 gamma=0.25 tau=3.0 G=21 | stored 1-R2=0.10284 scat=0.01868 ===
+   residual of STORED   under weightless=2.70e-01  weighted=3.39e-01
+   residual of sigma(T*) under weightless=1.00e-12  weighted=1.00e-12
+
+=== g050_t0300 gamma=0.5 tau=3.0 G=12 | stored 1-R2=0.10859 scat=0.02579 ===
+   residual of STORED   under weightless=7.82e-02  weighted=2.97e-01
+   residual of sigma(T*) under weightless=3.52e-15  weighted=3.52e-15
+
+LOOP B: iterate from the stored deficit solution (does deficit survive?)
+  g100_t0400: WEIGHTED-from-stored 1-R2=0.00313 scat=0.00283(res 2e-02) | WEIGHTLESS-control 1-R2=0.00338(res 1e-02) (45s)
+  g100_t0300: WEIGHTED-from-stored 1-R2=0.00001 scat=0.00001(res 2e-02) | WEIGHTLESS-control 1-R2=0.00004(res 6e-03) (41s)
+  g025_t0300: WEIGHTED-from-stored 1-R2=0.00040 scat=0.00038(res 2e-02) | WEIGHTLESS-control 1-R2=0.00361(res 4e-02) (66s)
+  g050_t0300: WEIGHTED-from-stored 1-R2=0.00042 scat=0.00041(res 1e-02) | WEIGHTLESS-control 1-R2=0.00078(res 9e-03) (4s)
