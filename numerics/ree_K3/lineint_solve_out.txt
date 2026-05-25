@@ -1,0 +1,5 @@
+Bandwidth-free smooth line-integral map (ANDERSON), gamma=1.0 tau=0.5 G=8
+  anderson it=  0 ||F||=2.468e-01 1-R2=2.37e-03 t=16s
+  anderson it=  2 ||F||=1.607e-02 1-R2=7.56e-04 t=46s
+  anderson it=  4 ||F||=1.562e-02 1-R2=1.16e-03 t=77s
+  anderson it=  6 ||F||=1.775e-02 1-R2=1.41e-03 t=108s
