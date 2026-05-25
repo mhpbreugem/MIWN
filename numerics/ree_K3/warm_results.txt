@@ -1,0 +1,6 @@
+Warm-start bandwidth-free cubic from REPO solutions (G=10).
+  stored = finite-h solution's deficit ;  warm = after bandwidth-free cubic from it ; cold = from no-learning
+  v0011 g=1.0 tau=0.5: stored 1-R2=0.0523(scat 0.0297) | WARM->h0: 1-R2=0.0007 scat=0.0002 | COLD->h0: 1-R2=0.0007 scat=0.0002 | res=4.8e-06 (77s)
+  v0009 g=1.0 tau=0.3: stored 1-R2=0.0735(scat 0.0632) | WARM->h0: 1-R2=0.0054 scat=0.0015 | COLD->h0: 1-R2=0.0045 scat=0.0010 | res=3.1e-06 (40s)
+  v0008 g=0.5 tau=11.0: stored 1-R2=0.0843(scat 0.0062) | WARM->h0: 1-R2=0.0189 scat=0.0000 | COLD->h0: 1-R2=0.0001 scat=0.0000 | res=4.9e-03 (83s)
+  v0010 g=4.0 tau=2.0: stored 1-R2=0.0822(scat 0.0106) | WARM->h0: 1-R2=0.0001 scat=0.0001 | COLD->h0: 1-R2=0.0000 scat=0.0000 | res=3.6e-05 (76s)
