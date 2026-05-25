@@ -1,0 +1,4 @@
+*_stdout.txt
+*_stderr.txt
+*_err.txt
+__pycache__/

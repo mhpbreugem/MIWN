@@ -1,0 +1,3 @@
+deficit(h) grid-converged: each h refined over two grids (h/du ~ 0.08-0.12)
+   h=0.0333 G=18 h/du=0.094  1-R2=0.042785 res=9.9e-12 (53s)
+   h=0.0333 G=22 h/du=0.117  1-R2=0.043283 res=9.5e-12 (79s)
