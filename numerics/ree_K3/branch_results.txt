@@ -1,0 +1,1 @@
+A) COLD-START lower gamma (tau=0.5, bandwidth-free cubic):
