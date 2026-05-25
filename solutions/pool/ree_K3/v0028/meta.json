@@ -1,20 +1,20 @@
 {
   "problem": "ree_K3",
   "version": "v0028",
-  "created_at": "2026-05-25T01:02:06.292062+00:00",
+  "created_at": "2026-05-25T01:03:41.032907+00:00",
   "standards_methods_sha": "ed7bbca57eda473691ec4776324bb5137e736f4f",
-  "task_id": "ree_K3_g0100_t0350",
+  "task_id": "ree_K3_g0050_t0100",
   "params": {
-    "gamma": 1.0,
-    "tau": 3.5,
+    "gamma": 0.5,
+    "tau": 1.0,
     "K": 3,
     "G_inner": 10,
     "pad": 4,
     "dps": 32
   },
   "metrics": {
-    "F_inf": "1.343e-22",
-    "one_minus_R2": 0.09925754
+    "F_inf": "3.514e-21",
+    "one_minus_R2": 0.07147784
   },
   "data": [
     "data/solution.npz"
