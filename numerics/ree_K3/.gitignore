@@ -2,3 +2,8 @@
 *_stderr.txt
 *_err.txt
 __pycache__/
+*.npy
+ckpt_stdout.txt
+joint_limit_stdout.txt
+kernel_verify_stdout.txt
+auto_weightless_stdout.txt
