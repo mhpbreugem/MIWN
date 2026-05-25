@@ -416,17 +416,17 @@
     {
       "id": "ree_K3_g0050_t0040",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "skip",
       "gamma": 0.5,
       "tau": 0.4,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
-      "result": null,
+      "result": {
+        "reason": "run_task: solver exited 2 for ree_K3_g0050_t0040"
+      },
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-3",
-      "claimed_at": "2026-05-25T06:41:03.654810Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0050_t0050",
@@ -1369,10 +1369,10 @@
     "total": 77,
     "done": 57,
     "ready": 13,
-    "claimed": 2,
+    "claimed": 1,
     "blocked": 0,
     "bailed": 0,
-    "skip": 5
+    "skip": 6
   },
   "notes": [
     "Schema: standards/runner/TASK_SCHEMA.md",
