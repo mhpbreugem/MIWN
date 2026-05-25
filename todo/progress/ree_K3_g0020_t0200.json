@@ -2,8 +2,8 @@
   "task_id": "ree_K3_g0020_t0200",
   "worker_id": "claude-1",
   "started_at": "2026-05-25T07:54:37Z",
-  "last_update": "2026-05-25T07:54:46Z",
-  "iter": 395,
+  "last_update": "2026-05-25T07:55:19Z",
+  "iter": 1,
   "ftol": "4.465163e-05",
   "ftol_history": [
     "1.363446e-03",
@@ -16,6 +16,8 @@
     "4.465163e-05"
   ],
   "extra": {
-    "phase": "anderson"
+    "phase": "mp_newton",
+    "n_fun": 1,
+    "n_jac": 0
   }
 }
