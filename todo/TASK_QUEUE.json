@@ -114,16 +114,19 @@
     {
       "id": "ree_K3_g0020_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "done",
       "gamma": 0.2,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
-      "checkpoint": null,
-      "result": null,
-      "claimed_by": "claude-1",
-      "claimed_at": "2026-05-25T07:54:36.340521Z",
-      "completed_at": null,
+      "checkpoint": "solutions/pool/ree_K3/v0044/",
+      "result": {
+        "1-R2": 0.1168946,
+        "F_max": "4.179e-25",
+        "version": "v0044",
+        "standards_methods_sha": "ed7bbca57eda473691ec4776324bb5137e736f4f"
+      },
+      "completed_at": "2026-05-25T07:57:39.499864Z",
       "note": ""
     },
     {
@@ -1380,9 +1383,9 @@
   },
   "summary": {
     "total": 77,
-    "done": 59,
+    "done": 60,
     "ready": 9,
-    "claimed": 3,
+    "claimed": 2,
     "blocked": 0,
     "bailed": 0,
     "skip": 6
