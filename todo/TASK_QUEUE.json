@@ -178,7 +178,7 @@
     {
       "id": "ree_K3_g0065_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.65,
       "tau": 2,
       "dps": 32,
@@ -186,9 +186,7 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": "",
-      "claimed_by": "claude-3",
-      "claimed_at": "2026-05-25T01:02:12.217097Z"
+      "note": ""
     },
     {
       "id": "ree_K3_g0080_t0200",
@@ -263,7 +261,7 @@
     {
       "id": "ree_K3_g0250_t0200",
       "problem": "ree_K3",
-      "status": "ready",
+      "status": "claimed",
       "gamma": 2.5,
       "tau": 2,
       "dps": 32,
@@ -271,7 +269,9 @@
       "checkpoint": null,
       "result": null,
       "completed_at": null,
-      "note": ""
+      "note": "",
+      "claimed_by": "claude-3",
+      "claimed_at": "2026-05-25T01:07:51.717202Z"
     },
     {
       "id": "ree_K3_g0320_t0200",
