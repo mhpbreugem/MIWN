@@ -50,7 +50,7 @@ def solve_live(gamma, tau, tid, report=10.0, max_iter=4000, tol=1e-12, m=8):
         el = time.time() - t0
         if el - last >= report or res < tol or it == 0:
             d = deficit(P.reshape(shape), tv)
-            print(f"[h=0] g={gamma} tau={tau} iter={it:4d} ||F||={res:.3e} 1-R2={d:.6f} best={best[1]:.3e} t={el:5.0f}s", flush=True)
+            print(f"[h=0] g={gamma} tau={tau} iter={it:4d} h=0.0000 ||F||={res:.3e} 1-R2={d:.6f} best={best[1]:.3e} t={el:5.0f}s", flush=True)
             last = el
         if res < tol: break
         if best[1] < 1e-3 and nimp > 300: break          # plateau-stop
