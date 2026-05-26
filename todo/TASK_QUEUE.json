@@ -84,14 +84,16 @@
     {
       "id": "ree_K3_g0010_t0200",
       "problem": "ree_K3",
-      "status": "ready",
+      "status": "claimed",
       "gamma": 0.1,
       "tau": 2,
       "dps": 32,
       "depends_on": [],
       "checkpoint": null,
       "completed_at": null,
-      "note": ""
+      "note": "",
+      "claimed_by": "local-drain",
+      "claimed_at": "2026-05-26T02:39:07Z"
     },
     {
       "id": "ree_K3_g0015_t0200",
