@@ -135,7 +135,7 @@
     {
       "id": "ree_K3_g0030_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.3,
       "tau": 2,
       "dps": 32,
@@ -144,8 +144,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:15:03.309944Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0040_t0200",
@@ -175,7 +175,7 @@
     {
       "id": "ree_K3_g0080_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.8,
       "tau": 2,
       "dps": 32,
@@ -183,8 +183,8 @@
       "checkpoint": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:13:31.391068Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0100_t0200",
@@ -204,7 +204,7 @@
     {
       "id": "ree_K3_g0130_t0200",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1.3,
       "tau": 2,
       "dps": 32,
@@ -213,8 +213,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:17:15.923443Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0160_t0200",
@@ -336,7 +336,7 @@
     {
       "id": "ree_K3_g0050_t0030",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 0.3,
       "dps": 32,
@@ -345,8 +345,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:16:55.894866Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0050_t0040",
@@ -390,7 +390,7 @@
     {
       "id": "ree_K3_g0050_t0080",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 0.8,
       "dps": 32,
@@ -399,8 +399,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:22:22.528100Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0050_t0100",
@@ -576,7 +576,7 @@
     {
       "id": "ree_K3_g0050_t1500",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 0.5,
       "tau": 15,
       "dps": 32,
@@ -585,8 +585,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:22:20.624893Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0100_t0030",
@@ -664,7 +664,7 @@
     {
       "id": "ree_K3_g0100_t0100",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 1,
       "dps": 32,
@@ -673,8 +673,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26375570336",
-      "claimed_at": "2026-05-24T23:29:32.004122Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0100_t0130",
@@ -692,7 +692,7 @@
     {
       "id": "ree_K3_g0100_t0160",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 1.6,
       "dps": 32,
@@ -701,8 +701,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:13:19.092190Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0100_t0250",
@@ -731,7 +731,7 @@
     {
       "id": "ree_K3_g0100_t0350",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 1,
       "tau": 3.5,
       "dps": 32,
@@ -740,8 +740,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:19:04.680050Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0100_t0400",
@@ -850,7 +850,7 @@
     {
       "id": "ree_K3_g0400_t0030",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 0.3,
       "dps": 32,
@@ -859,8 +859,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26375570336",
-      "claimed_at": "2026-05-24T23:35:36.615020Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0400_t0040",
@@ -961,7 +961,7 @@
     {
       "id": "ree_K3_g0400_t0250",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 2.5,
       "dps": 32,
@@ -970,8 +970,8 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:11:47.388043Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0400_t0300",
@@ -989,7 +989,7 @@
     {
       "id": "ree_K3_g0400_t0350",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 3.5,
       "dps": 32,
@@ -998,13 +998,13 @@
       "result": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-2-26374783399",
-      "claimed_at": "2026-05-24T23:20:46.937038Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0400_t0400",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 4,
       "dps": 32,
@@ -1012,8 +1012,8 @@
       "checkpoint": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:18:50.721655Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0400_t0500",
@@ -1056,7 +1056,7 @@
     {
       "id": "ree_K3_g0400_t0900",
       "problem": "ree_K3",
-      "status": "claimed",
+      "status": "ready",
       "gamma": 4,
       "tau": 9,
       "dps": 32,
@@ -1064,8 +1064,8 @@
       "checkpoint": null,
       "completed_at": null,
       "note": "",
-      "claimed_by": "claude-1-26374783399",
-      "claimed_at": "2026-05-24T23:20:40.304408Z"
+      "claimed_by": null,
+      "claimed_at": null
     },
     {
       "id": "ree_K3_g0400_t1100",
