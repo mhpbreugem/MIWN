@@ -867,14 +867,29 @@ at $G=15$.
 \paragraph{Equilibrium selection.}
 The contour map $\Phi$ admits the fully-revealing price function
 $p=\Lam(\Tstar)$ as one fixed point unconditionally: identical posteriors
-clear the market at zero trade for any preferences. The Picard iteration
-from the no-learning seed converges to a \emph{different}, partially-revealing
-fixed point at non-CARA preferences. The vanishing-noise selection of
-Section~\ref{sec:vanishing-noise} picks out the partially-revealing fixed
-point at every finite $\gamma$: the limit of vanishing supply noise is
-the unique no-noise limit of the standard Hellwig--Diamond--Verrecchia
-equilibrium under non-CARA preferences, and that limit coincides with
-the partially-revealing branch found numerically.
+clear the market at zero trade for any preferences. Resolving which
+fixed point is the relevant equilibrium requires care, because it
+interacts with how the contour integral is discretised. The production
+solver regularises the contour delta with a narrow smoothing kernel of
+bandwidth $h\!\approx\!0.05\,\Delta u$ (Appendix~\ref{app:numerics}),
+the numerical counterpart of an infinitesimal supply noise. Iterating the
+\emph{smoothed} map from the no-learning seed converges, at non-CARA
+preferences, to a \emph{different}, partially-revealing fixed point, whose
+deficit decreases monotonically to a strictly positive limit
+($\approx0.085$ at $\gamma=0.5,\tau=2$) as $h\to0$. Iterating the
+\emph{exact} ($h=0$) contour map instead converges, from every seed we
+tried---including one initialised at the smoothed-map partially-revealing
+solution---only to the fully-revealing price or to the trivial constant
+$p=\tfrac12$: the partially-revealing branch is a saddle of the exact
+no-noise operator, not a numerical attractor. This is consistent with,
+and is selected by, the vanishing-noise construction of
+Section~\ref{sec:vanishing-noise}: at every finite $\gamma$ the
+$\sigma_{z}\to0$ limit of the standard Hellwig--Diamond--Verrecchia
+equilibrium under non-CARA preferences is partially revealing
+(Proposition~\ref{prop:vanishing}), and that limit coincides with the
+positive-$h$ branch the smoothed solver tracks. The partially-revealing
+equilibrium is therefore a vanishing-noise selection, not the generic
+attractor of naive iteration at exactly zero noise.
 
 \begin{proposition}[REE partial revelation]\label{prop:ree}
 Fix $K=3$, $W=1$. For every $\gamma\in[0.1,5]$ at $\tau=2$, the contour
@@ -909,7 +924,12 @@ $\gamma$ & $1-R^{2}$ & slope on $\Tstar$ & $\|F\|_\infty$ & status \\
 \end{tabular}
 \end{center}
 All runs use $G=20$, $\tau=2$, $W=1$; $1\!-\!R^{2}$ is weighted by
-ex-ante signal probability. The revelation deficit is
+ex-ante signal probability. The $\gamma=0.10$ row is a non-converged
+fallback ($\|F\|_{\infty}\!\approx\!5\times10^{-2}$): at $\gamma=0.10$ the
+operator is near the small-$\tau$ fold and the value $0.154$ is sensitive
+to the grid width (a narrower $\xi$-grid inflates it); it should be read as
+indicative only. The strictly-converged rows ($\gamma\ge0.3$) are robust.
+The revelation deficit is
 monotonically decreasing in $\gamma$, from $0.088$ at $\gamma=0.5$
 to $0.016$ at $\gamma=4$, exactly as the no-learning analysis predicts.
 The slope on $\Tstar$ is $0.52$ at $\gamma=0.5$---prices capture
@@ -2100,6 +2120,30 @@ Figure~\ref{fig:convergence} shows a representative convergence path.
    }
    \label{fig:convergence}
 \end{figure}
+
+\paragraph{Kernel regularisation and the $h=0$ limit.}
+The two-pass contour trace above resolves the level set of a function known
+only on a grid; the production solver replaces the implied delta on
+$\{P=p\}$ by a narrow Gaussian kernel of bandwidth
+$h\!\approx\!0.05\,\Delta u$ in price units, which makes $\Phi$ a smooth
+function of the nodal prices and is what allows Newton--Krylov to reach
+$\|F\|_{\infty}<10^{-14}$. The $\|F\|_{\infty}<10^{-14}$ ``strict'' status
+and the $0.085$ grid-plateau therefore refer to this smoothed (or,
+equivalently, posterior-function) operator. The bare $h=0$ contour
+(literal linear-interpolation crossings, no kernel) is only piecewise
+smooth: a crossing enters or leaves a grid cell discontinuously, so the
+sup-norm residual floors at $\sim10^{-3}$ and the map is not
+Newton-solvable. More consequentially, iterating the exact $h=0$ operator
+converges only to the fully-revealing or trivial fixed point even when
+seeded at the smoothed-map partially-revealing solution: the
+partially-revealing branch is a saddle of the $h=0$ operator and is
+realised numerically only at positive $h$, i.e.\ as the vanishing-noise
+selection (Section~\ref{sec:convergence}, Proposition~\ref{prop:vanishing}).
+The kernel bandwidth is thus the numerical proxy for the
+$\sigma_{z}\!\to\!0^{+}$ supply noise, not an incidental smoothing; the
+reported deficits are the $h\to0^{+}$ extrapolant, which is strictly
+positive and matches the independent high-precision posterior-function
+solves to plotting accuracy.
 
 \paragraph{Contour curvature.}
 A numerical observation that may be of independent interest: at every
